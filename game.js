@@ -74,29 +74,44 @@ function playRound(playerSelection, computerSelection, score){
 }
 
 function game(){
-
     let playerSelection = '';
     let computerSelection = '';
     let resultMessage = '';
-
     let playerScore = 0;
     let computerScore = 0;
     let score = [playerScore, computerScore];
 
     for(let i = 0; i < 5; i++){
+        // play round
         playerSelection = userPlay();
         computerSelection = computerPlay();
         resultMessage = playRound(playerSelection, computerSelection, score);
-
+        // print results
+        console.log(`Round ${i + 1}`);
         console.log(`You picked ${playerSelection}`);
         console.log(`Computer picked ${computerSelection}`);
         console.log(resultMessage);
         console.log(`Score: ${score[0]} - ${score[1]}`);
-
-        // check who wins...
-        
+        // check win conditions
+        if(i >= 2){
+            if(score[0] == 3){
+                console.log('Congratulations! You Win The Game!!');
+                break;
+            }else if(score[1] == 3){
+                console.log('Computer Wins! Game Over...');
+                break;
+            }
+        }
+        if(i == 4){
+            if(score[0] > score[1]){
+                console.log('Congratulations! You Win The Game!!');
+            }else if(score[0] < score[1]){
+                console.log('Computer Wins! Game Over...');
+            }else{
+                console.log('Meh... The Game is a Draw');
+            }
+        }
     }
-
 }
 
 game();
