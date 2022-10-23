@@ -1,16 +1,16 @@
-
 console.log('Helloooo!!');
 
 function userPlay(){
     let userInput = '';
-    while(true){
-        userInput = prompt('Choose Rock, Paper or Scissors...').toLowerCase();
-        if(userInput == 'rock' || userInput == 'paper' || userInput == 'scissors'){
-            return userInput;
-        }else{
+    while(userInput == ''){
+        userInput = prompt('Choose Rock, Paper or Scissors...');
+        userInput = userInput.toLowerCase();
+        if(!(userInput == 'rock' || userInput == 'paper' || userInput == 'scissors')){
             console.log('Incorrect input...');
+            userInput = '';
         }
-    }     
+    }
+    return userInput;     
 }
 
 function computerPlay(){
